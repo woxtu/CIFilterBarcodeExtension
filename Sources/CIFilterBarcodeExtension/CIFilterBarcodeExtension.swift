@@ -1,6 +1,9 @@
 import CoreImage
 
 public enum CIFilterBarcodeExtension {
+  /// Generates an EAN-8 barcode.
+  public static func ean8BarcodeGenerator() -> CIEAN8BarcodeGenerator { .init() }
+
   /// Generates an EAN-13 barcode.
   public static func ean13BarcodeGenerator() -> CIEAN13BarcodeGenerator { .init() }
 
@@ -12,6 +15,10 @@ public enum CIFilterBarcodeExtension {
 
   /// Publishes all generator filters provided by the package.
   public static func registerAll() {
+    CIFilter.registerName(
+      .init(describing: CIEAN8BarcodeGenerator.self),
+      constructor: CIEAN8BarcodeGeneratorConstructor()
+    )
     CIFilter.registerName(
       .init(describing: CIEAN13BarcodeGenerator.self),
       constructor: CIEAN13BarcodeGeneratorConstructor()
