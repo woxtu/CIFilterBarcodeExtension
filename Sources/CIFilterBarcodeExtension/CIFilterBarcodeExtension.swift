@@ -4,6 +4,9 @@ public enum CIFilterBarcodeExtension {
   /// Generates a Codabar barcode.
   public static func codabarBarcodeGenerator() -> CICodabarBarcodeGenerator { .init() }
 
+  /// Generates a Code 39 barcode.
+  public static func code39BarcodeGenerator() -> CICode39BarcodeGenerator { .init() }
+
   /// Generates an EAN-8 barcode.
   public static func ean8BarcodeGenerator() -> CIEAN8BarcodeGenerator { .init() }
 
@@ -21,6 +24,10 @@ public enum CIFilterBarcodeExtension {
     CIFilter.registerName(
       .init(describing: CICodabarBarcodeGenerator.self),
       constructor: CICodabarBarcodeGeneratorConstructor()
+    )
+    CIFilter.registerName(
+      .init(describing: CICode39BarcodeGenerator.self),
+      constructor: CICode39BarcodeGeneratorConstructor()
     )
     CIFilter.registerName(
       .init(describing: CIEAN8BarcodeGenerator.self),
