@@ -22,6 +22,9 @@ public enum CIFilterBarcodeExtension {
   /// Generates an ITF-14 barcode.
   public static func itf14BarcodeGenerator() -> CIITF14BarcodeGenerator { .init() }
 
+  /// Generates an UPC-E barcode.
+  public static func upceBarcodeGenerator() -> CIUPCEBarcodeGenerator { .init() }
+
   /// Publishes all generator filters provided by the package.
   public static func registerAll() {
     CIFilter.registerName(
@@ -51,6 +54,10 @@ public enum CIFilterBarcodeExtension {
     CIFilter.registerName(
       .init(describing: CIITF14BarcodeGenerator.self),
       constructor: CIITF14BarcodeGeneratorConstructor()
+    )
+    CIFilter.registerName(
+      .init(describing: CIUPCEBarcodeGenerator.self),
+      constructor: CIUPCEBarcodeGeneratorConstructor()
     )
   }
 }
